@@ -1,455 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Morgan Mutugi | Professional Portfolio</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SOC SIEM Elite Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- header -->
-<header>
-    <a href="#" class="logo">Morgan</a>
-    <nav>
-        <a href="#home" class="active">Home</a>
-        <a href="#why-hire-me">Why Hire Me</a>
-        <a href="#services">Services</a>
-        <a href="#resume">Resume</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<header class="topbar">
+  <h1>SOC // SIEM ELITE COMMAND CENTER</h1>
+  <button onclick="runScan()">INIT SCAN</button>
 </header>
 
-<!-- home section -->
-<section class="home active" id="home">
-    <div class="home-detail">
-        <h1>Morgan <span>Mutugi</span></h1>
-        <h2>Professional Graphics Designer</h2>
+<!-- KPI SECTION -->
+<section class="kpi-grid">
+  <div class="kpi">
+    <h3>Active Threats</h3>
+    <p id="threats">0</p>
+  </div>
 
-        <div class="professional-highlights">
-            <div class="highlight-item">Certified Cybersecurity Professional</div>
-            <div class="highlight-item">5+ Years Development Experience</div>
-            <div class="highlight-item">Proven Track Record</div>
-        </div>
+  <div class="kpi">
+    <h3>Protected Assets</h3>
+    <p id="assets">0</p>
+  </div>
 
-        <p>Results-driven professional with expertise in cybersecurity, full-stack development, and digital solutions. Committed to delivering innovative, secure, and scalable solutions that drive business success and protect digital assets.</p>
+  <div class="kpi">
+    <h3>Network Nodes</h3>
+    <p id="nodes">0</p>
+  </div>
 
-        <div class="stats">
-            <div class="stat-item">
-                <span class="stat-number">50</span>
-                <span class="stat-label">Projects Completed</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">5</span>
-                <span class="stat-label">Years Experience</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">100</span>
-                <span class="stat-label">Client Satisfaction</span>
-            </div>
-        </div>
-
-        <div class="btn-sci">
-            <a href="#" class="btn">Download Professional CV</a>
-            <div class="sci">
-                <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-                <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
-                <a href="#" aria-label="Discord"><i class='bx bxl-discord'></i></a>
-                <a href="#" aria-label="YouTube"><i class='bx bxl-youtube'></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="home-img">
-        <div class="img-box">
-            <div class="img-item">
-                <img src="images/home.png" alt="Morgan Mutugi">
-            </div>
-        </div>
-    </div>
+  <div class="kpi">
+    <h3>Security Events</h3>
+    <p id="events">0</p>
+  </div>
 </section>
 
-<!-- Why Hire Me section -->
-<section class="why-hire-me" id="why-hire-me">
-    <div class="why-hire-container">
-        <h2 class="heading">Why <span>Hire Me</span></h2>
-        <div class="why-hire-grid">
-            <div class="why-hire-card">
-                <div class="why-hire-icon"><i class='bx bx-brain'></i></div>
-                <h3>Multi-disciplinary Expert</h3>
-                <p>I bring diverse expertise in Cybersecurity, Programming, Web Development, and Design — enabling me to deliver comprehensive solutions tailored to your business needs.</p>
-            </div>
-            <div class="why-hire-card">
-                <div class="why-hire-icon"><i class='bx bx-bullseye'></i></div>
-                <h3>Results-Driven Professional</h3>
-                <p>With proven experience across IT support, web security, and custom development, I deliver practical solutions that boost efficiency and protect your digital assets effectively.</p>
-            </div>
-            <div class="why-hire-card">
-                <div class="why-hire-icon"><i class='bx bx-dollar'></i></div>
-                <h3>Cost-Effective Services</h3>
-                <p>Affordable pricing ($8–$781 per project) with premium quality — perfect for startups, small businesses, and enterprises looking for reliable and professional tech support.</p>
-            </div>
-            <div class="why-hire-card">
-                <div class="why-hire-icon"><i class='bx bx-time-five'></i></div>
-                <h3>Quick & Reliable Turnaround</h3>
-                <p>Fast project delivery without compromising quality. From malware cleanup to full website development, I ensure timely completion and consistent excellence.</p>
-            </div>
-        </div>
-    </div>
+<!-- MAIN GRID -->
+<section class="grid">
+
+  <!-- THREAT FEED -->
+  <div class="panel large">
+    <h2>REAL-TIME THREAT FEED</h2>
+    <div id="feed" class="feed"></div>
+  </div>
+
+  <!-- SYSTEM STATUS -->
+  <div class="panel">
+    <h2>SYSTEM STATUS</h2>
+
+    <p>Firewall: <span class="ok">ACTIVE</span></p>
+    <p>IDS/IPS: <span class="ok">MONITORING</span></p>
+    <p>Endpoint Shield: <span class="ok">RUNNING</span></p>
+    <p>Threat Intel: <span class="warn">UPDATING</span></p>
+
+    <hr>
+
+    <p>Encryption: AES-256</p>
+    <p>TLS Layer: 1.3</p>
+  </div>
+
 </section>
 
-<!-- Services section -->
-<section class="services" id="services">
-    <h2 class="heading">My <span>Services</span></h2>
-    <div class="services-container">
-        <!-- service boxes (shortened for brevity, keep your existing ones) -->
-        <!-- I'll include a few examples; you can copy your full list -->
-        <div class="service-box">
-            <div class="icon"><i class='bx bx-shield'></i></div>
-            <h3>Basic Cybersecurity</h3>
-            <div class="service-details">
-                <ul><li>✓ Web security checks</li><li>✓ Malware scanning & cleanup</li></ul>
-                <p class="pricing"><strong>💰 $16 – $78</strong></p>
-            </div>
-        </div>
-        <div class="service-box">
-            <div class="icon"><i class='bx bx-wrench'></i></div>
-            <h3>IT Support</h3>
-            <div class="service-details">
-                <ul><li>✓ Fix slow computers</li><li>✓ OS installation</li></ul>
-                <p class="pricing"><strong>💰 $8 – $40</strong></p>
-            </div>
-        </div>
-        <!-- Add all your service boxes here exactly as you had them -->
-        <!-- I'm truncating for space; use your full list from original -->
-    </div>
-</section>
-
-<!-- Resume section (keep your original structure) -->
-<section class="resume" id="resume">
-    <!-- ... your existing resume HTML ... -->
-</section>
-
-<!-- Testimonials section -->
-<section class="testimonials" id="testimonials">
-    <!-- ... your existing testimonials HTML ... -->
-</section>
-
-<!-- Contact section -->
-<section class="contact" id="contact">
-    <!-- ... your existing contact HTML ... -->
+<!-- TERMINAL -->
+<section class="terminal">
+  <p>> initializing SOC engine...</p>
+  <p>> scanning endpoints...</p>
+  <p>> correlating SIEM logs...</p>
+  <p id="status">> system status: STABLE</p>
 </section>
 
 <script src="script.js"></script>
 </body>
-</html>                <div class="why-hire-icon">
-                    <i class="bx bx-bullseye"></i>
-                </div>
-                <h3>Results-Driven Professional</h3>
-                <p>With proven experience across IT support, web security, and custom development, I deliver practical solutions that boost efficiency and protect your digital assets effectively.</p>
-            </div>
-
-            <div class="why-hire-card">
-                <div class="why-hire-icon">
-                    <i class="bx bx-dollar"></i>
-                </div>
-                <h3>Cost-Effective Services</h3>
-                <p>Affordable pricing ($8-$781 per project) with premium quality — perfect for startups, small businesses, and enterprises looking for reliable and professional tech support.</p>
-            </div>
-
-            <div class="why-hire-card">
-                <div class="why-hire-icon">
-                    <i class="bx bx-time-five"></i>
-                </div>
-                <h3>Quick & Reliable Turnaround</h3>
-                <p>Fast project delivery without compromising quality. From malware cleanup to full website development, I ensure timely completion and consistent excellence.</p>
-            </div>
-
-            <div class="why-hire-card">
-                <div class="why-hire-icon">
-                    <i class="bx bx-check-double"></i>
-                </div>
-                <h3>Quality Assurance</h3>
-                <p>Every project undergoes rigorous testing and quality checks to ensure it meets industry standards and your specific requirements perfectly.</p>
-            </div>
-
-            <div class="why-hire-card">
-                <div class="why-hire-icon">
-                    <i class="bx bx-headphone"></i>
-                </div>
-                <h3>Professional Support</h3>
-                <p>Dedicated support throughout the project lifecycle with clear communication, regular updates, and quick response times to address any concerns.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--Service section-->
-<section class="services active" id="services">
-    <h2 class="heading">my <span>Services</span></h2>
-    <div class="services-container">
-    
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-shield"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Basic Cybersecurity Services</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Web security checks (WordPress, small business sites)</li>
-                <li>✓ Malware scanning & cleanup</li>
-                <li>✓ Password/security setup for businesses</li>
-            </ul>
-            <p class="pricing"><strong>💰 $16 – $78 per job</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-wrench"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>IT Support & Troubleshooting</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Fix slow computers & optimize performance</li>
-                <li>✓ Install OS (Windows/Linux dual boot)</li>
-                <li>✓ Network setup (WiFi, routers, connectivity)</li>
-            </ul>
-            <p class="pricing"><strong>💰 $8 – $40 per job</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-code"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Website Development</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Simple business websites (responsive design)</li>
-                <li>✓ Portfolio websites (showcasing your work)</li>
-                <li>✓ SEO-optimized & fast-loading sites</li>
-            </ul>
-            <p class="pricing"><strong>💰 $39 – $234 per site</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-search"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Freelance Cybersecurity Services</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Vulnerability scanning & assessment</li>
-                <li>✓ Basic penetration testing (small systems)</li>
-                <li>✓ Security audits for SMEs & startups</li>
-            </ul>
-            <p class="pricing"><strong>💰 $78 – $781 per project</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-cog"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Automation & Scripting</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Write custom scripts (Python, Bash, JavaScript)</li>
-                <li>✓ Automate tasks (data processing, backups, reports)</li>
-                <li>✓ Workflow optimization for businesses</li>
-            </ul>
-            <p class="pricing"><strong>💰 $39 – $391 per project</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-data"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Database & Backend Services</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Database setup (MySQL, PostgreSQL)</li>
-                <li>✓ Fix backend issues & optimize performance</li>
-                <li>✓ API development & integration</li>
-            </ul>
-            <p class="pricing"><strong>💰 Custom pricing based on scope</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-lock-open"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Ethical Hacking & Penetration Testing</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Simulate real-world attacks on systems</li>
-                <li>✓ Find & document vulnerabilities</li>
-                <li>✓ Provide detailed security reports & recommendations</li>
-            </ul>
-            <p class="pricing"><strong>💰 $391 – $3,906 per project</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-briefcase"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Security Consulting (Ongoing)</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Manage company security operations</li>
-                <li>✓ Set security policies & monitoring systems</li>
-                <li>✓ Compliance & risk management strategies</li>
-            </ul>
-            <p class="pricing"><strong>💰 $234 – $1,563/month</strong></p>
-        </div>
-    </div>
-
-    <div class="service-box">
-        <div class="icon">
-            <i class="bx bx-bulb"></i>
-            <a href="#"><i class="bx bx-arrow-back"></i></a>
-        </div>
-        <h3>Custom Software Products</h3>
-        <div class="service-details">
-            <ul>
-                <li>✓ Build SaaS tools (security dashboards, monitoring)</li>
-                <li>✓ Develop Forex trading bots & algorithms</li>
-                <li>✓ Custom solutions tailored to your business</li>
-            </ul>
-            <p class="pricing"><strong>💰 $500+ per project</strong></p>
-        </div>
-    </div>
-
-    </div>
-</section>
-
-<!-- resume section -->
-<section class="resume active" id="resume">
-    <div class="resume-container">
-        <div class="resume-box resume-left">
-            <button class="resume-btn active">Experience</button>
-            <button class="resume-btn">Education</button>
-            <button class="resume-btn">Skills</button>
-            <button class="resume-btn">About Me</button>
-        </div>
-
-        <div class="resume-box resume-right">
-            <div class="resume-detail experience active">
-                <h2 class="heading">My <span>Experience</span></h2>
-                <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                <div class="resume-list">
-                    <div class="resume-item">
-                        <h3>Cybersecurity Analyst</h3>
-                        <p class="year">2024 - 2025</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                    </div>
-                    <div class="resume-item">
-                        <h3>Programmer</h3>
-                        <p class="year">2023 - 2024</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                    </div>
-                        <div class="resume-item">
-                            <h3>Graphics Designer</h3>
-                            <p class="year">2022 - 2023</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                        </div>
-                        <div class="resume-item">
-                            <h3>Website Developer</h3>
-                            <p class="year">2021 - 2022</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                    </div>
-
-                </div>
-            </div>
-                <div class="resume-detail education">
-                    <h2 class="heading">My <span>Education</span></h2>
-                    <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                    <div class="resume-list">
-                        <div class="resume-item">
-                            <h3>Kenya High School</h3>
-                            <p class="year">2018 - 2021</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                        </div>
-                        <div class="resume-item">
-                            <h3>University of Nairobi</h3>
-                            <p class="year">2022 - 2025</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                        </div>
-                        <div class="resume-item">
-                            <h3>University of Nairobi</h3>
-                            <p class="year">2022 - 2025</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                        </div>
-                        <div class="resume-item">
-                            <h3>University of Nairobi</h3>
-                            <p class="year">2022 - 2025</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                        </div>
-                        <div class="resume-item">
-                            <h3>University of Nairobi</h3>
-                            <p class="year">2022 - 2025</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="resume-detail skills">
-                    <h2 class="heading">My <span>Skills</span></h2>
-                    <p class="desc">Core competencies in cybersecurity, secure development, network infrastructure, and risk management delivered with a professional, outcomes-focused approach.</p>
-                    <div class="resume-list">
-                        <div class="resume-item">
-                            <h3>Cybersecurity Operations</h3>
-                            <p><strong>Highlights:</strong></p>
-                            <ul>
-                                <li>✓ Threat detection, incident response, and SOC monitoring</li>
-                                <li>✓ Endpoint protection and log analysis</li>
-                                <li>✓ Attack surface review and mitigation planning</li>
-                            </ul>
-                        </div>
-                        <div class="resume-item">
-                            <h3>Secure Development</h3>
-                            <p><strong>Highlights:</strong></p>
-                            <ul>
-                                <li>✓ Secure coding, code review, and vulnerability remediation</li>
-                                <li>✓ Automation with Python, JavaScript, and shell scripting</li>
-                                <li>✓ CI/CD integration and DevSecOps practices</li>
-                            </ul>
-                        </div>
-                        <div class="resume-item">
-                            <h3>Network & Infrastructure Security</h3>
-                            <p><strong>Highlights:</strong></p>
-                            <ul>
-                                <li>✓ Firewall, IDS/IPS, VPN and secure network design</li>
-                                <li>✓ Cloud and on-premises infrastructure protection</li>
-                                <li>✓ Protocol hardening and segmentation</li>
-                            </ul>
-                        </div>
-                        <div class="resume-item">
-                            <h3>Governance, Risk & Compliance</h3>
-                            <p><strong>Highlights:</strong></p>
-                            <ul>
-                                <li>✓ Risk assessments and security gap analysis</li>
-                                <li>✓ Policy development and audit preparation</li>
-                                <li>✓ Compliance alignment and control implementation</li>
-                            </ul>
-                        </div>
-                        <div class="resume-item">
-                            <h3>Systems & Cloud Security</h3>
-                            <p><strong>Highlights:</strong></p>
+</html>                            <p><strong>Highlights:</strong></p>
                             <ul>
                                 <li>✓ Linux/Windows administration and server hardening</li>
                                 <li>✓ Cloud deployment security and infrastructure resilience</li>
